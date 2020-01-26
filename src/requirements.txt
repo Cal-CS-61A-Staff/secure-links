@@ -1,0 +1,6 @@
+Flask
+gunicorn
+mysqlclient
+SQLAlchemy
+requests
+flask_oauthlib
