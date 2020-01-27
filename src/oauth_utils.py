@@ -1,5 +1,6 @@
 import datetime
 from functools import wraps
+from urllib.parse import urlparse
 
 from flask import session, request, redirect, url_for
 
@@ -32,6 +33,10 @@ def secure(app):
     def decorator(route):
         @wraps(route)
         def wrapped(*args, **kwargs):
+            url = urlparse(request.url)
+            if url.netloc == "go":
+                redirect_url = url._replace(netloc="go.cs61a.org")
+                return redirect(redirect_url.geturl())
             if not is_staff(app.remote):
                 resp = redirect(url_for("login"))
                 expire_date = datetime.datetime.now() + datetime.timedelta(minutes=15)
