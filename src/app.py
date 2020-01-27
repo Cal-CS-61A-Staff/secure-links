@@ -29,7 +29,7 @@ SHEETS = ["Sheet1"]
 def handler(path):
     if not links:
         refresh()
-    if path in links:
+    if path in links and links[path]:
         return redirect(
             add_url_params(links[path], request.query_string.decode("utf-8"))
         )
