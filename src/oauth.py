@@ -10,8 +10,6 @@ from constants import COOKIE_TARGET_URL
 
 CONSUMER_KEY = "61a-shortlinks"
 
-CONSUMER_KEY = "61a-web-repl"  # temp!
-
 
 def create_oauth_client(app):
     oauth = OAuth(app)
