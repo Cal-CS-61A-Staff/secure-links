@@ -5,7 +5,7 @@ from flask import session, request, redirect, url_for
 
 from constants import COOKIE_TARGET_URL
 
-AUTHORIZED_ROLES = ["staff", "instructor", "grader", "lab assistant"]
+AUTHORIZED_ROLES = ["staff", "instructor", "grader"]
 ENDPOINT = "cal/cs61a/sp20"
 
 
