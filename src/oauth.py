@@ -19,7 +19,7 @@ def create_oauth_client(app):
         "ok-server",  # Server Name
         consumer_key=CONSUMER_KEY,
         consumer_secret=OAUTH_SECRET,
-        request_token_params={"scope": "all", "state": lambda: security.gen_salt(10)},
+        request_token_params={"scope": "email", "state": lambda: security.gen_salt(10)},
         base_url="https://okpy.org/api/v3/",
         request_token_url=None,
         access_token_method="POST",
