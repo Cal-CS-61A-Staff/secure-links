@@ -4,3 +4,4 @@ mysqlclient
 SQLAlchemy
 requests
 flask_oauthlib
+cachetools

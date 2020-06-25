@@ -2,12 +2,22 @@ import datetime
 from functools import wraps
 from urllib.parse import urlparse
 
+import requests
+from cachetools import TTLCache
 from flask import session, request, redirect, url_for
 
 from constants import COOKIE_TARGET_URL
 
 AUTHORIZED_ROLES = ["staff", "instructor", "grader"]
-ENDPOINT = "cal/cs61a/su20"
+COURSE = "cs61a"
+
+_cache = TTLCache(100, 60 * 30)
+
+
+def get_endpoint():
+    if "cs61a" not in _cache:
+        _cache["cs61a"] = requests.post(f"https://auth.apps.cs61a.org/api/{COURSE}/get_endpoint").json()
+    return _cache["cs61a"]
 
 
 def is_staff(remote):
@@ -19,7 +29,7 @@ def is_staff(remote):
         for course in ret.data["data"]["participations"]:
             if course["role"] not in AUTHORIZED_ROLES:
                 continue
-            if course["course"]["offering"] != ENDPOINT:
+            if course["course"]["offering"] != get_endpoint():
                 continue
             return True
         return False
