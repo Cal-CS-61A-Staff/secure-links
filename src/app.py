@@ -19,8 +19,8 @@ create_oauth_client(app)
 
 links, author = {}, {}
 
-AUTH_CLIENT_NAME = "secure-internal-links"
-DOC_URL = "https://docs.google.com/spreadsheets/d/1wxixgeehUtpXf1TQaFUiSSi_cOA-Tlz8c6o8fTodG_c/edit#gid=0"
+AUTH_CLIENT_NAME = "secure-external-links"
+DOC_URL = "https://docs.google.com/spreadsheets/d/1m0Zi8do7dWzTinSLzl-4sCVDW67kiMAaQ5o8qG_bh1U/edit#gid=0"
 SHEETS = ["Sheet1"]
 
 

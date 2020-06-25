@@ -7,7 +7,7 @@ from flask import session, request, redirect, url_for
 from constants import COOKIE_TARGET_URL
 
 AUTHORIZED_ROLES = ["staff", "instructor", "grader"]
-ENDPOINT = "cal/cs61a/sp20"
+ENDPOINT = "cal/cs61a/su20"
 
 
 def is_staff(remote):
@@ -34,8 +34,8 @@ def secure(app):
         @wraps(route)
         def wrapped(*args, **kwargs):
             url = urlparse(request.url)
-            if url.netloc == "go":
-                redirect_url = url._replace(netloc="go.cs61a.org")
+            if url.netloc == "links":
+                redirect_url = url._replace(netloc="links.cs61a.org")
                 return redirect(redirect_url.geturl())
             if not is_staff(app.remote):
                 resp = redirect(url_for("login"))
