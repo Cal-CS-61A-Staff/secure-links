@@ -33,7 +33,7 @@ def handler(path):
         return redirect(
             add_url_params(links[path], request.query_string.decode("utf-8"))
         )
-    return base()
+    return to_links(path)
 
 
 @app.route("/preview/<path>/")
@@ -51,6 +51,10 @@ def preview(path):
 @app.route("/")
 def base():
     return redirect("https://cs61a.org")
+
+
+def to_links(path):
+    return redirect("https://links.cs61a.org/" + path)
 
 
 @app.route("/_refresh/")
