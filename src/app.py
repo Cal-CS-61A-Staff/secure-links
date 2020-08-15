@@ -15,6 +15,8 @@ def add_url_params(url, params_string):
 
 
 app = Flask(__name__)
+if __name__ == '__main__':
+    app.debug = True
 create_oauth_client(app)
 
 links, author = {}, {}

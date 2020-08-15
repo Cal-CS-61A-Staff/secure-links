@@ -1,3 +1,4 @@
+import os
 import urllib.parse
 
 import requests
@@ -16,11 +17,12 @@ def create_oauth_client(app):
 
     app.secret_key = OAUTH_SECRET
 
-    app.config.update(
-        SESSION_COOKIE_SECURE=True,
-        SESSION_COOKIE_HTTPONLY=True,
-        SESSION_COOKIE_SAMESITE='Lax',
-    )
+    if not app.debug:
+        app.config.update(
+            SESSION_COOKIE_SECURE=True,
+            SESSION_COOKIE_HTTPONLY=True,
+            SESSION_COOKIE_SAMESITE='Lax',
+        )
 
     remote = oauth.remote_app(
         "ok-server",  # Server Name
